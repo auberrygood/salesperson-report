@@ -6,17 +6,18 @@ melons_sold = [] #list of melons sold by each salesperson
 
 #salespeople/melons_sold data, probably better off being collected as a dictionary, 
 #so that melons sold can be tied to a specific saleperson without needing to know anything but the person's name
+#con of list system - lists have to be in sync to match data with correct person/melonsales
 
 f = open('sales-report.txt')  #accessing data within sales-report.txt file
 for line in f: #loop over each line in sales-report.txt file
-    line = line.rstrip() #ridding of any trailing whitespace within file
-    entries = line.split('|') #distinguising individual elements of file, by using "|" as seperator 
+    line = line.rstrip() #ridding of any trailing whitespace at end of each file line
+    entries = line.split('|') #distinguishing individual elements of file line, by using "|" as seperator 
 
     salesperson = entries[0]  #salesperson's name is the 1st element of each line in the file
     melons = int(entries[2]) #melons sold is the third element of each line in the file
 
     if salesperson in salespeople:   #checking if name already exists in list of salepeople
-        position = salespeople.index(salesperson)  #if yes, what is the index of the person in the salespeople list?
+        position = salespeople.index(salesperson)  #if yes, grab index of the person in the salespeople list & store in position variable
 
         melons_sold[position] += melons   
         #index of person == index of melons sold, 
